@@ -1,0 +1,225 @@
+{% extends 'inherit/-base.html' %}
+{% load humanize %}
+{% load static %}
+{% load jalali_tags %}
+{% load crispy_forms_tags %}
+{% load i18n %}
+{% load humanize %}
+{% load trans_persian_number_to_english %}
+{% block title %}Product_Detail{% endblock %}
+
+
+
+{% block content %}
+    <!-- Preloader Start -->
+    <!-- Preloader End -->
+
+    <!-- Main Wrapper Start -->
+    <div class="wrapper">
+        <!-- Header Start -->
+        <!-- Header End -->
+
+        <!-- Breadcrumb area Start -->
+        <div class="breadcrumb-area bg-color ptb--20" data-bg-color="#f6f6f6">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="d-flex justify-content-between align-items-center flex-sm-row flex-column">
+                            <h1 class="page-title">{% trans 'Product details of' %} «{{ product.title }}»</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Breadcrumb area End -->
+
+        <!-- Main Content Wrapper Start -->
+        <div class="main-content-wrapper">
+            <div class="page-content-inner ptb--80">
+                <div class="container">
+                    <div class="row no-gutters mb--80">
+                        <div class="col-12 col-sm-4 product-main-image d-flex align-content-center">
+                            <img class="m-auto" style="max-height: 400px;"
+                                 src="{{ product.image.url }}"
+                                 alt="">
+                        </div>
+                        <div class="col-12 col-sm-8 product-main-details mt-md--50">
+                            <div class="product-summary pl-lg--30 pl-md--0 text-right p-4">
+                                <h3 class="product-title mb--20">{{ product.title }}</h3>
+                                {#                                <p class="product-short-description mb--20">#}
+                                {#                                    {{ product.description }}#}
+                                {#                                </p>#}
+                                <div class="my-5 py-5 product-price-wrapper mb--25">
+                                    <span class="money text-success">{{ product.price|intcomma:False|trans_to_persian_number }} {% trans '$' %}</span>
+                                    <span class="price-separator">-</span>
+                                    <span class="money old-price text-danger">۲۱۰,۰۰۰{% trans '$' %}</span>
+                                </div>
+                                <span class="money old-price text-danger">۲۱۰,۰۰۰ تومان</span>
+                            </div>
+                            <div class="product-action d-flex align-items-sm-center align-content-center mb--30">
+                                <form action="{% url 'cart:add_to_cart' product.id %}" method="post">
+                                    {% csrf_token %}
+                                    {# {{ add_to_cart_form|crispy }}#}
+                                    <div class="quantity-wrapper d-flex justify-content-start">
+                                        <div class="quantity">
+                                            <input type="number" class="quantity-input" name="quantity" id="qty"
+                                                   value="1"
+                                                   min="1" max="30">
+                                        </div>
+                                    </div>
+                                    <button type="submit" class="btn btn-small btn-bg-red btn-color-white btn-hover-2">
+                                        {% trans 'Add to cart' %}
+                                    </button>
+                                </form>
+                            </div>
+                            <div class="product-footer-meta mt-5 pt-5">
+                                <p><span class="m-0">دسته بندی ها:</span>
+                                    <a href="shop.html">لباس</a>,
+                                    <a href="shop.html">تابستانی</a>,
+                                    <a href="shop.html">گرم</a>,
+                                    <a href="shop.html">زنانه</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-12">
+                        <div class="product-data-tab tab-style-3">
+                            <div class="nav nav-tabs product-data-tab__head" id="product-tab" role="tablist">
+                                <a class="m-0 product-data-tab__link nav-link active" id="nav-description-tab"
+                                   data-toggle="tab" href="#nav-description" role="tab" aria-selected="true">
+                                    <span>{% trans 'Product description' %}</span>
+                                </a>
+                                <a class="m-0 product-data-tab__link nav-link" id="nav-info-tab" data-toggle="tab"
+                                   href="#nav-info" role="tab" aria-selected="true">
+                                    <span>ویژگی ها</span>
+                                </a>
+                                <a class="m-0 product-data-tab__link nav-link" id="nav-reviews-tab"
+                                   data-toggle="tab" href="#nav-reviews" role="tab" aria-selected="true">
+                                    <span>({{ product.comments.count }}نظر )</span>
+                                </a>
+                            </div>
+                            <div class="tab-content product-data-tab__content" id="product-tabContent">
+                                <div class="tab-pane fade show active" id="nav-description" role="tabpanel"
+                                     aria-labelledby="nav-description-tab">
+                                    <div class="product-description text-justify">
+                                        <p>{{ product.description|safe }}</p>
+                                    </div>
+                                </div>
+                                <div class="tab-pane text-right" id="nav-info" role="tabpanel"
+                                     aria-labelledby="nav-info-tab">
+                                    <div class="table-content table-responsive">
+                                        <table class="table shop_attributes">
+                                            <tbody>
+                                            <tr>
+                                                <th>وزن</th>
+                                                <td>۴۳۰ گرم</td>
+                                            </tr>
+                                            <tr>
+                                                <th>سایز</th>
+                                                <td>XL</td>
+                                            </tr>
+                                            <tr>
+                                                <th>رنگ</th>
+                                                <td>
+                                                    <a href="shop-sidebar.html">مشکی</a>,
+                                                    <a href="shop-sidebar.html">سبز</a>,
+                                                    <a href="shop-sidebar.html">قرمز</a>,
+                                                    <a href="shop-sidebar.html">نارنجی</a>,
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="nav-reviews" role="tabpanel"
+                                     aria-labelledby="nav-reviews-tab">
+                                    <div class="product-reviews">
+                                        <h3 class="review__title">{{ product.comments.count }} نظر
+                                            برای {{ product.title }}</h3>
+                                        <ul class="review__list">
+                                            {% for comment in product.comments.all %}
+                                                <li class="review__item">
+                                                    <div class="review__container">
+                                                        <div class="review__text">
+                                                            <div class="d-flex flex-sm-row flex-row">
+                                                                <img src="{% static "assets/img/others/comment-1.jpg" %}"
+                                                                     alt="Review Avatar" class="review__avatar">
+                                                                <div>
+                                                                    <div class="review__meta" dir="ltr">
+                                                                        <span class="review__published-date">{{ comment.datetime_created| to_jalali:'%Y/%m/%d'|trans_to_persian_number }}</span>
+                                                                        <span class="review__dash">-</span>
+                                                                        <strong class="review__author px-2">{{ comment.user.username }}
+                                                                    </div>
+                                                                    <div class="product-rating">
+                                                                        <div class="m-0 star-rating star-five">
+                                                                                <span>Rated <strong
+                                                                                        class="rating">{{ comment.score_stars }}</strong> out of 5</span>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <p class="review__description text-right px-2">
+                                                                {{ comment.text }}
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            {% endfor %}
+                                        </ul>
+                                        {% if user.is_authenticated %}
+                                            <div class="review-form-wrapper">
+                                                <div class="row">
+                                                    <div class="border-top py-5 w-100"></div>
+                                                    <div class="col-lg-8 m-auto">
+                                                        <span class="reply-title pull-right">{% trans 'Write your comment' %}</span>
+                                                        <br>
+                                                        <form action="{% url 'product_comments' product.id %}"
+                                                              method="POST">
+                                                            {% csrf_token %}
+                                                            {{ comment_form|crispy }}
+                                                            <input type="submit" value="{% trans 'Submit' %}"
+                                                                   class="btn-submit">
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        {% else %}
+                                            <p>{% translate 'You should be Login to write Comment!' %}</p>
+                                            <a href="{% url 'account_login' %}">{% trans 'Login' %}</a>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content Wrapper End -->
+
+    <!-- Footer Start-->
+    <!-- Footer End-->
+
+    <!-- Search form Popup Start -->
+    <div class="searchform__popup" id="searchForm">
+        <a href="#" class="btn-close"><i class="flaticon flaticon-cross"></i></a>
+        <div class="searchform__body">
+            <p>Start typing and press Enter to search</p>
+            <form class="searchform">
+                <input type="text" name="popup-search" id="popup-search" class="searchform__input"
+                       placeholder="Search Entire Store...">
+                <button type="submit" class="searchform__submit"><i
+                        class="flaticon flaticon-magnifying-glass-icon"></i></button>
+            </form>
+        </div>
+    </div>`
+    <!-- Search form Popup End -->
+
+    <!-- Mini Cart Start -->
+    {% include 'inherit/minicart.html' %}
+    <!-- Mini Cart End -->
+{% endblock %}

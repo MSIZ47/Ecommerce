@@ -1,0 +1,51 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-05-08 09:52+0330\n"
+"PO-Revision-Date: 2024-05-08 09:53+0330\n"
+"Last-Translator:   <msiz47king@gmail.com>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Translated-Using: django-rosetta 0.10.0\n"
+
+#: .\templates\orders\checkout.html:22
+msgid "Order"
+msgstr "سفارش"
+
+#: .\templates\orders\checkout.html:39
+msgid "Order Detail"
+msgstr "جزییات سفارش"
+
+#: .\templates\orders\checkout.html:85
+msgid "submit"
+msgstr "ثبت"
+
+#: .\templates\orders\checkout.html:92
+msgid "Your Order"
+msgstr "سفارش شما"
+
+#: .\templates\orders\checkout.html:98
+msgid "product"
+msgstr "محصول"
+
+#: .\templates\orders\checkout.html:99
+msgid "Unit Total Price"
+msgstr "قیمت نهایی "
+
+#: .\templates\orders\checkout.html:108 .\templates\orders\checkout.html:116
+msgid "$"
+msgstr "تومان"
+
+#: .\templates\orders\checkout.html:115
+msgid "Total Price"
+msgstr "قیمت مجموع"
