@@ -16,6 +16,8 @@ for i18n too.I used *Django_jalali_data* to use shamsi date in the website and t
 of the products.I created a comlete order app for managing the order of the customer and save all the details of an order in the database.at last i simiulate a Zarinpal payment gataway for the payment proccess of the website that its
 not yet complete(its fully programmed but requiers some debug with real zarinpal merchant_id).
 
+hint:8. you should have gettexttools and gettextruntime installed and added to path in windows for using the internationaliztion(search *cant find mesguinq, make sure gettexttools installed windows* and follow stackoverflow steps)its pretty straight forward.
+
 ## **Installation**
 
 To install Project Title, follow these steps:
@@ -24,17 +26,16 @@ To install Project Title, follow these steps:
 2. Navigate to the project directory
 3. create an .env file
 4. go to djecrety.ir and generate a fake django secret key and place it in the .env file
-5. then put the DJANGO_DEBUG(set it to True for debug) , DJANGO_ZARINPAL_MERCHANT_ID, DATABASE_PASSWORD, DATABASE_NAME, DATABASE_USER On the .env file of the project
-6. in this step you must have a .env file in root of the project with data of  DJANGO_SECRET_KEY, DJANGO_DEBUG, DJANGO_ZARINPAL_MERCHANT_ID, DATABASE_NAME, DATABASE_USER and DATABASE_PASSWORD
+5. then put the DJANGO_DEBUG, DJANGO_ZARINPAL_MERCHANT_ID, DATABASE_PASSWORD, DATABASE_NAME, DATABASE_USER On the .env file of the project
+6. your .env file in the project should be something like the example for .env file.txt,so check it out
 7. Install dependencies: **pipenv install**
-8. you should have gettexttools and gettextruntime installed and added to path in windows for using the internationaliztion(search *cant find mesguinq, make sure gettexttools installed windows* and follow stackoverflow steps)its pretty straight forward.
 9. activate virtual env :  **pipenv shell**
 10. use docker **docker compose up --build**
-12. makemigration for every app in the project(its nessessory) forexample docker compose exec web python manage.py makemigrations products -->**docker compose python manage.py makemigrations**
+12. makemigration for every app in the project(its nessessory)--> forexample *docker compose exec web python manage.py makemigrations products* --> **docker compose python manage.py makemigrations**
 13. the migration of the database -->**docker compose python manage.py migrate**
 14. add a superuser to the project -->**docker compose python manage.py createsuperuser**
 15. Start the project: **docker compose exec web python manage.py runserver**
-16. go to http://127.0.0.1:8000/admin and with superuser create some dummydata and fake products and comments for better understanding the website if you want.
+16. go to http://127.0.0.1:8000/admin and with superuser create some dummydata and fake products and comments and soon for better understanding the website if you want.
   
 
 ## **Usage**
@@ -42,8 +43,8 @@ To install Project Title, follow these steps:
 follow these steps:
 
 1. Open the project in your favorite code editor.
-2. Modify the source code to fit your needs.
-3. start the project: **docker compose up**
+2. open up docker
+3. start the project: **docker compose exec web python manage.py runserver**
 4. Use the project as desired.
 
 
