@@ -31,11 +31,11 @@ To install Project Title, follow these steps:
 7. Install dependencies: **pipenv install**
 9. activate virtual env :  **pipenv shell**
 10. use docker **docker compose up --build**
-12. makemigration for every app in the project(its nessessory)--> forexample *docker compose exec web python manage.py makemigrations products* --> **docker compose python manage.py makemigrations**
+12. makemigration for every app in the project(its nessessory) forexample --> *docker compose exec web python manage.py makemigrations products* --> **docker compose python manage.py makemigrations (name of the app)**
 13. the migration of the database -->**docker compose python manage.py migrate**
 14. add a superuser to the project -->**docker compose python manage.py createsuperuser**
 15. Start the project: **docker compose exec web python manage.py runserver**
-16. go to http://127.0.0.1:8000/admin and with superuser create some dummydata and fake products and comments and soon for better understanding the website if you want.
+16. go to http://127.0.0.1:8000/admin and login with superuser that you created, create some dummydata and fake products and comments for better understanding the project if you want.
   
 
 ## **Usage**
